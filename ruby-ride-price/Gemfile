@@ -1,0 +1,14 @@
+source 'https://rubygems.org'
+
+gem 'goliath'
+gem 'rack', '~> 1.1'
+gem 'rack-contrib', '1.8.0'
+gem 'em-synchrony'
+gem 'em-http-request'
+gem 'json'
+
+group :development do
+  gem 'pry'
+  gem 'pry-coolline'
+end
+

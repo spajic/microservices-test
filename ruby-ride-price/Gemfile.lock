@@ -1,0 +1,72 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    addressable (2.5.2)
+      public_suffix (>= 2.0.2, < 4.0)
+    async-rack (0.5.1)
+      rack (~> 1.1)
+    coderay (1.1.2)
+    cookiejar (0.3.3)
+    coolline (0.5.0)
+      unicode_utils (~> 1.4)
+    einhorn (0.7.4)
+    em-http-request (1.1.5)
+      addressable (>= 2.3.4)
+      cookiejar (!= 0.3.1)
+      em-socksify (>= 0.3)
+      eventmachine (>= 1.0.3)
+      http_parser.rb (>= 0.6.0)
+    em-socksify (0.3.2)
+      eventmachine (>= 1.0.0.beta.4)
+    em-synchrony (1.0.6)
+      eventmachine (>= 1.0.0.beta.1)
+    em-websocket (0.3.8)
+      addressable (>= 2.1.1)
+      eventmachine (>= 0.12.9)
+    eventmachine (1.2.7)
+    goliath (1.0.6)
+      async-rack
+      einhorn
+      em-synchrony (>= 1.0.0)
+      em-websocket (= 0.3.8)
+      eventmachine (>= 1.0.0.beta.4)
+      http_parser.rb (>= 0.6.0)
+      log4r
+      multi_json
+      rack (>= 1.2.2)
+      rack-contrib
+      rack-respond_to
+    http_parser.rb (0.6.0)
+    json (2.1.0)
+    log4r (1.1.10)
+    method_source (0.9.0)
+    multi_json (1.13.1)
+    pry (0.11.3)
+      coderay (~> 1.1.0)
+      method_source (~> 0.9.0)
+    pry-coolline (0.2.5)
+      coolline (~> 0.5)
+    public_suffix (3.0.2)
+    rack (1.6.10)
+    rack-accept-media-types (0.9)
+    rack-contrib (1.8.0)
+      rack (~> 1.4)
+    rack-respond_to (0.9.8)
+      rack-accept-media-types (>= 0.6)
+    unicode_utils (1.4.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  em-http-request
+  em-synchrony
+  goliath
+  json
+  pry
+  pry-coolline
+  rack (~> 1.1)
+  rack-contrib (= 1.8.0)
+
+BUNDLED WITH
+   1.16.1
