@@ -1,0 +1,10 @@
+[
+  {
+    "id": 1,
+    "currencyCode": "RUB",
+    "serviceCents": 25000,
+    "costPerMinuteCents": 2000,
+    "costPerKmCents": 2000,
+    "minimalPriceCents": 50000
+  }
+]
