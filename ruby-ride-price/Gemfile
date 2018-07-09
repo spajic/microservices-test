@@ -12,3 +12,7 @@ group :development do
   gem 'pry-coolline'
 end
 
+group :test do
+  gem 'rspec'
+end
+
