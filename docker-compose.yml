@@ -1,0 +1,14 @@
+version: '3'
+services:
+  go-ride-details:
+    environment:
+      - GOOGLE_MAPS_API_KEY
+    build: go-ride-details
+    ports:
+      - "8080:8080"
+  ruby-ride-price:
+    build: ruby-ride-price
+    depends_on:
+      - go-ride-details
+    ports:
+      - "9000:9000"
