@@ -1,7 +1,6 @@
 require 'goliath'
 require 'em-synchrony/em-http'
 require 'json'
-require 'pry'
 
 require_relative 'calculate_price'
 
