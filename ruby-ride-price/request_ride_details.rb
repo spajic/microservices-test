@@ -24,7 +24,7 @@ class RequestRideDetails
     end
 
     if parsedResponse['errors']
-      return error_response("Got errors from go-ride-details: '#{parsedResponse['errors']}'")
+      return error_response("Got errors from go-ride-details: '#{parsedResponse['errors'][0]['details']}'")
     end
 
     OpenStruct.new(

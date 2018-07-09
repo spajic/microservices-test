@@ -7,4 +7,4 @@ COPY Gemfile.lock /myapp/Gemfile.lock
 RUN bundle install --without development test
 COPY . /myapp
 EXPOSE 9000
-ENTRYPOINT ["bundle", "exec", "ruby", "ride_price.rb", "-sv", "-e", "prod"]
+ENTRYPOINT ["bundle", "exec", "ruby", "ride_price_api.rb", "-sv", "-e", "prod"]

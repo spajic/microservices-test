@@ -15,8 +15,15 @@ class RidePriceAPI < Goliath::API
   def response(env)
     return [404, {}, ''] unless env['PATH_INFO'] == '/ride_price'
 
-    ride_details =
-      RequestRideDetails.new(from: params['from'], to: params['to']).call
+    unless params['from'] && params['to']
+      return response_with({
+        errors: [{
+          details: "Required params missing ('from' and 'to' are required)"
+        }],
+      })
+    end
+
+    ride_details = fetch_ride_details
 
     return response_with({ errors: ride_details.errors }) if ride_details.errors
 
@@ -29,6 +36,10 @@ class RidePriceAPI < Goliath::API
   end
 
   private
+
+  def fetch_ride_details
+    RequestRideDetails.new(from: params['from'], to: params['to']).call
+  end
 
   def response_with(body)
     [200, {'Content-Type' => 'application/javascript'}, body.to_json]
