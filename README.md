@@ -6,13 +6,13 @@
 git clone git@github.com:spajic/microservices-test.git
 cd microservices-test
 RIDE_SERVICE_PORT=9009 GOOGLE_MAPS_API_KEY=secret docker-compose up
-curl 'http://localhost:9009/ride_price?from=54.691662,37.503621&to=55.809289,37.582365''
+curl 'http://localhost:9009/ride_price?from=55.691662,37.503621&to=55.809289,37.582365'
 ```
 
 ## Performance
 
 ```bash
-ab -c 20 -n 100 'http://localhost:9009/ride_price?from=54.691662,37.503621&to=55.809289,37.582365'
+ab -c 20 -n 100 'http://localhost:9009/ride_price?from=55.691662,37.503621&to=55.809289,37.582365'
 ```
 
 Сервис обрабатывает 300 запросов, поступающих в 10 параллельных потоков за 5 секунд.
@@ -79,3 +79,4 @@ RPC, думаю, было бы избыточно и более сложно.
 - Хранение тарифов в БД
 - Развёртывание кластера goliath за reverse-proxy для обработки большей нагрузки
 - Размеры docker-images хорошо бы сделать поменьше
+- Добавить авторизацию для использования внешнего сервиса
