@@ -10,7 +10,8 @@ import (
 	"googlemaps.github.io/maps"
 )
 
-const endpoint = "/ride_details_by_coords"
+// Endpoint is service endpoint
+const Endpoint = "/ride_details_by_coords"
 const apiKeyEnvVariableName = "GOOGLE_MAPS_API_KEY"
 const portEnvVariableName = "RIDE_DETAILS_PORT"
 const defaultPort = "8080"
@@ -26,8 +27,8 @@ func main() {
 		port = defaultPort
 	}
 
-	http.Handle(endpoint, &handler{mapsClient: createMapsClient(apiKey)})
-	log.Printf("go-ride-details is serving %s on port %s\n", endpoint, port)
+	http.Handle(Endpoint, &ServiceHandler{mapsClient: createMapsClient(apiKey)})
+	log.Printf("go-ride-details is serving %s on port %s\n", Endpoint, port)
 	http.ListenAndServe(":"+port, nil)
 }
 
@@ -47,11 +48,16 @@ func createMapsClient(apiKey string) *maps.Client {
 	return c
 }
 
-type handler struct {
-	mapsClient *maps.Client
+type matrixFetcher interface {
+	DistanceMatrix(ctx context.Context, r *maps.DistanceMatrixRequest) (*maps.DistanceMatrixResponse, error)
 }
 
-func (h *handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+// ServiceHandler is service handler
+type ServiceHandler struct {
+	mapsClient matrixFetcher
+}
+
+func (h *ServiceHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	from := r.FormValue(fromParamName)
 	to := r.FormValue(toParamName)
 	log.Printf("from: %s, to: %s\n", from, to)
