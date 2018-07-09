@@ -4,4 +4,5 @@ WORKDIR /app
 ENV SRC_DIR=/go/src/github.com/spajic/microservices-test/go-ride-details
 ADD . $SRC_DIR
 RUN cd $SRC_DIR; go build -o app; cp app /app/
+EXPOSE 8080
 ENTRYPOINT ["./app"]
